@@ -38,7 +38,7 @@ export default function FearGreedIndex() {
     }, [])
 
     return (
-        <section className="font-poppins px-3 py-2 flex-[.3] border border-zinc-700 ">
+        <section className="font-poppins px-3 py-2 flex-[.3] border border-zinc-700 rounded-lg">
             <h3 className="font-bold mb-1">
                 Fear greed indicator
             </h3>
@@ -50,8 +50,8 @@ export default function FearGreedIndex() {
                         <div className="gaugecover bg-zinc-800 font-poppins font-bold text-zinc-50 flex flex-col">
                             {isLoading ? <i className='bx bx-loader-alt bx-spin' ></i> :
                                 <>
-                                    <p className='text-[2vw]'>{data?.value}</p>
-                                    <p className='my-1 mb-3 text-center text-[1.5vw] font-normal '>Now: {data?.value_classification}</p>
+                                    <p className='text-[2vw] lg:text-[4vw] sm:text-[6.5vw]'>{data?.value}</p>
+                                    <p className='my-1 mb-3 text-center text-[1.5vw] lg:text-[3vw] sm:text-[4vw] font-normal '>Now: {data?.value_classification}</p>
                                 </>
                             }
 
