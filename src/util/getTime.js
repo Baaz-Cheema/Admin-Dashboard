@@ -13,6 +13,11 @@ export function getTime(dateInMs) {
     }
 
     return `${hours}:00 ${period}`
+
+    // const date = new Date(dateInMs);
+    // const options = { month: 'short', day: 'numeric' };
+    // const formattedDate = date.toLocaleDateString('en-US', options);
+    // return formattedDate
 }
 
 // for (let i = 0; i < data.prices.length; i++) {

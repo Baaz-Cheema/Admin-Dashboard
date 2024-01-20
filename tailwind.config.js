@@ -14,8 +14,14 @@ export default {
     },
 
     extend: {
+      fontFamily: {
+        'poppins': ['Poppins', 'sans-serif'],
+      },
+      backgroundColor: {
+        'zinc-750': '#303036',
+      },
+    }
 
-    },
   },
   plugins: [],
 }
