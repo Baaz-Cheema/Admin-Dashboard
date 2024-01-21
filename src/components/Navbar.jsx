@@ -11,10 +11,15 @@ export default function Navbar() {
     return (
         <section className="bg-zinc-900 flex md:fixed md:bottom-0 md:w-full z-10">
             <nav className="font-poppins text-xs flex flex-col gap-10 pt-5 md:pt-0 box-border sticky h-fit top-5 md:flex-row md:w-full md:justify-between md:gap-0 md:px-5 md:static" >
-                <NavLink className="flex flex-col items-center mb-10 md:mb-0 md:hidden" >
-                    <div className="w-10">
+                <NavLink className="flex items-center flex-col gap-2 md:hidden">
+                    <div className="w-9">
                         <img src="https://altcoinsbox.com/wp-content/uploads/2023/01/nexa-logo.png" alt="" />
                     </div>
+                    <div>
+                        <p className="text-[.8rem]">COINSIGHT</p>
+                        <p className="text-zinc-400 text-[.5rem]">Visionary Trading</p>
+                    </div>
+
                 </NavLink>
                 <NavLink to={'/main'} className={({ isActive }) => activeLink(isActive)}>
                     <i className="fi fi-rr-overview text-3xl"></i>
