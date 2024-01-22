@@ -16,6 +16,7 @@ export default {
     extend: {
       fontFamily: {
         'poppins': ['Poppins', 'sans-serif'],
+        'roboto':['Roboto', 'sans-serif']
       },
       backgroundColor: {
         'zinc-750': '#303036',
