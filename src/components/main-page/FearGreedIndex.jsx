@@ -19,6 +19,15 @@ function convertTime(dateInMs) {
 
 
 export default function FearGreedIndex() {
+    function setColor(val) {
+        if (val > 55) {
+            return 'text-green-500'
+        }
+        if (val < 45) {
+            return 'text-red-500'
+        }
+        return
+    }
     const gauge = useRef(null)
     const [isLoading, setIsloading] = useState(true)
     const [data, setData] = useState({ value: 0, value_classification: 'Neutral', timestamp: 'loading..' })
@@ -50,8 +59,11 @@ export default function FearGreedIndex() {
                         <div className="gaugecover bg-zinc-800 font-poppins font-bold text-zinc-50 flex flex-col">
                             {isLoading ? <i className='bx bx-loader-alt bx-spin' ></i> :
                                 <>
-                                    <p className='text-[2vw] lg:text-[4vw] sm:text-[6.5vw]'>{data?.value}</p>
-                                    <p className='my-1 mb-3 text-center text-[1.5vw] lg:text-[3vw] sm:text-[4vw] font-normal '>Now: {data?.value_classification}</p>
+                                    <p className='text-[2vw] lg:text-[4vw] sm:text-[6.5vw] '>{data?.value}</p>
+                                    <p className='my-1 mb-3 text-center text-[1.5vw] lg:text-[3vw] sm:text-[4vw] font-normal'>
+                                        Now: <span className={`${setColor(data?.value)}`}>
+                                            {data?.value_classification}</span>
+                                    </p>
                                 </>
                             }
 
@@ -59,11 +71,11 @@ export default function FearGreedIndex() {
                     </div>
                 </div>
             </div>
-            <div className='flex justify-between mt-10 mb-3 text-zinc-400'>
+            <div className='flex justify-between mt-10 mb-3 text-zinc-400 flex-wrap'>
                 <a className='text-xs' href="">alternative.me</a>
                 <p className='text-xs '>last updated: {convertTime(data.timestamp)}</p>
             </div>
-            <p className='text-sm text-zinc-400'>Our Fear and Greed Index helps temper emotional reactions in the volatile crypto market, preventing FOMO during market surges.</p>
+            <p className='text-sm text-zinc-400'>The crypto market behaviour is very emotional. People tend to get greedy when the market is rising which results in FOMO (Fear of missing out). Also, people often sell their coins in irrational reaction of seeing red numbers. With our Fear and Greed Index, we try to save you from your own emotional overreactions.</p>
 
         </section>
     )
