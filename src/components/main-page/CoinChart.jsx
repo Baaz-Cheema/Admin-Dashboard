@@ -15,6 +15,7 @@ import {
     Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import ControlButtons from './ControlButtons';
 
 
 console.log(data.prices.length)
@@ -68,30 +69,23 @@ export default function CoinChart() {
         }, 1000)
     }, [])
     return (
-        <main className='flex gap-5 mb-10 lg:flex-col'>
+        <main className='flex gap-10 mb-10 lg:flex-col'>
             {
                 <section className='border border-zinc-700 w-[70%] lg:w-full font-poppins flex-[.7] lg:max-h-none rounded-lg relative'>
                     <div className='flex items-center justify-between px-8 md:px-3'>
-                        <div className='flex items-center gap-3'>
+                        <div className='flex items-center gap-3 flex-1'>
                             <div className='w-10 md:py-5'>
                                 <img className='w-full h-full object-cover' src="https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1696501400" alt="" />
                             </div>
                             <h3 className='font-poppins font-bold'>Bitcoin</h3>
                         </div>
-                        <div className='py-3 flex items-center gap-4 md:hidden'>
-                            <div className='px-5 w-[12rem] py-3 border border-zinc-700 flex items-center justify-between cursor-pointer'>
-                                <button >Data Type</button>
-                                <i className='bx bx-chevron-down' ></i>
-                            </div>
-                            <div className='px-5 py-3 w-[12rem] border border-zinc-700 flex items-center  justify-between'>
-                                <button>Weekly</button>
-                                <i className='bx bx-chevron-down' ></i>
-                            </div>
+                        <div className='py-3 flex flex-1 items-center gap-4 md:hidden'>
+                            <ControlButtons />
                         </div>
                     </div>
                     {loading ?
                         <div className='w-full h-[28rem] lg:h-[40rem] flex justify-center items-center pb-10 md:h-[35rem]'>
-                            <i className='bx bx-loader-alt bx-spin text-6xl text-blue-500 ' ></i>
+                            <i className='bx bx-loader-alt bx-spin text-6xl text-amber-500 ' ></i>
                         </div> :
                         hello ?
                             <div className='h-[28rem] pb-2 px-10 lg:w-full md:px-0 md:pb-2 lg:h-[40rem] md:h-[35rem]' >
