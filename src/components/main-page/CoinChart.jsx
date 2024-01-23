@@ -4,39 +4,13 @@ import FearGreedIndex from './FearGreedIndex';
 import 'chart.js/auto'; // ADD THIS
 
 import { useEffect, useState } from 'react';
-import {
-    Chart as ChartJS,
-    CategoryScale,
-    LinearScale,
-    PointElement,
-    LineElement,
-    Title,
-    Tooltip,
-    Legend,
-} from 'chart.js';
+
 import { Line } from 'react-chartjs-2';
 import ControlButtons from './ControlButtons';
 
-
-console.log(data.prices.length)
 const hello = data.prices.map((a, i) => (
     { time: getTime(a[0]), price: a[1] }
 ))
-
-
-const CustomTooltip = ({ active, payload }) => {
-    if (active && payload && payload.length) {
-        const time = payload[0].payload.time;
-        const price = payload[0].payload.price;
-        return (
-            <div className="bg-zinc-500 opacity-75 p-3">
-                <p className="label">{`Price : ${price.toFixed(2)}`}</p>
-                <p className="intro">{`Time : ${time}`}</p>
-            </div>
-        );
-    }
-    return null;
-}
 
 const options = {
     responsive: true,

@@ -25,7 +25,7 @@ export default function CoinListSummary() {
 
                 {coinList.map((coin, i) => <SingleCoin
                     key={coin.name}
-                    bg={i % 2 === 0 && 'bg-zinc-750'}
+                    bgColor={i % 2 === 0 && 'bg-zinc-750'}
                     name={coin.name}
                     image={coin.image}
                     currentPrice={coin.current_price}

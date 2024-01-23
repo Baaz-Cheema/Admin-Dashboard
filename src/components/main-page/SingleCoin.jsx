@@ -41,7 +41,7 @@ const options = {
 
 
 
-function trendSymbol(val) {
+function colorisePriceChange(val) {
     if (val === 0) {
         return <i className='bx bxs-down-arrow' ></i>
     }
@@ -53,11 +53,11 @@ function trendSymbol(val) {
 }
 
 
-export default function SingleCoin({ name, image, currentPrice, change24h, marketcap, volume, symbol, bg }) {
+export default function SingleCoin({ name, image, currentPrice, change24h, marketcap, volume, symbol, bgColor }) {
     const [loading, setLoading] = useState(true)
     let formatter = new Intl.NumberFormat('en-US', { notation: 'compact', maximumFractionDigits: 2 });
     return (
-        <div className={`w-full py-4 px-2  flex justify-between border-b border-zinc-700 ${bg} hover:bg-zinc-750 cursor-pointer`}>
+        <div className={`w-full py-4 px-2  flex justify-between border-b border-zinc-700 ${bgColor} hover:bg-zinc-750 cursor-pointer`}>
             <div className="flex-[.2] flex items-center gap-4 pl-4 md:pl-1 md:gap-2 sm:flex-1">
                 <div className="w-8">
                     <img src={image} alt="" />
@@ -69,20 +69,20 @@ export default function SingleCoin({ name, image, currentPrice, change24h, marke
 
             </div>
 
-            <div className="flex gap-5 justify-end flex-[.3] items-center lg:flex-[.4] sm:flex-1 font-bold font-roboto">
+            <div className="flex gap-5 justify-end flex-[.3] items-center lg:flex-[.4] sm:flex-1  font-roboto">
                 <div className="flex-[.7]  justify-end hidden md:block text-end">
-                    <h6 className="flex-1">${currentPrice && currentPrice.toFixed(2)}</h6>
+                    <h6 className="flex-1">${currentPrice && parseFloat(currentPrice.toFixed(2)).toLocaleString('en-US', { minimumFractionDigits: 2 })}</h6>
                     <h6 className={`flex-1 text-xs justify-end flex items-center  gap-1 ${change24h && change24h.toFixed(2) > 0 ? 'text-green-500' : 'text-red-500'}`}>
-                        {change24h && change24h.toFixed(2)}% {trendSymbol(change24h)}</h6>
+                        {change24h && change24h.toFixed(2)}% {colorisePriceChange(change24h)}</h6>
                 </div>
                 <h6 className="flex-1 md:hidden">${currentPrice && currentPrice.toFixed(2)}</h6>
                 <h6 className={`flex-1 md:hidden text-left flex items-center gap-2 ${change24h && change24h.toFixed(2) > 0 ? 'text-green-500' : 'text-red-500'}`}>
-                    {change24h && change24h.toFixed(2)}% {trendSymbol(change24h)}</h6>
+                    {change24h && change24h.toFixed(2)}% {colorisePriceChange(change24h)}</h6>
             </div>
             <div className="flex-[.4] flex justify-center items-center gap-5 lg:flex-[.3] md:flex-[.2] sm:flex-1 font-roboto">
-                <h6 className="flex-[.4] lg:hidden font-bold">${formatter.format(volume)}</h6>
-                <h6 className="flex-[.5] lg:hidden font-bold">${formatter.format(marketcap)}</h6>
-                <div className="flex-1 text-end hidden lg:block font-bold">
+                <h6 className="flex-[.4] lg:hidden">${formatter.format(volume)}</h6>
+                <h6 className="flex-[.5] lg:hidden">${formatter.format(marketcap)}</h6>
+                <div className="flex-1 text-end hidden lg:block">
                     <h6 className="flex-[.4]">${formatter.format(volume)}</h6>
                     <h6 className="text-xs">${formatter.format(marketcap)} </h6>
                 </div>
