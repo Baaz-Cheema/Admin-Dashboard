@@ -13,7 +13,7 @@ export default function SearchBar() {
                     <input className="bg-zinc-800 " type="text" placeholder="Search..." />
                 </div>
 
-                <div className="bg-amber-400 flex items-center text-amber-50 rounded">
+                <div className="bg-amber-500 flex items-center text-amber-50 rounded">
                     <p className="px-5">Create new account</p>
                 </div>
                 <div className="border-amber-400 border-2 rounded flex items-center">
