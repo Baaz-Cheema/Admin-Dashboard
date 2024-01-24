@@ -1,7 +1,8 @@
+import { Button } from '@mui/material';
 import { coinList } from '../../util/coinList';
 
 import SingleCoin from './SingleCoin';
-
+import { Link } from 'react-router-dom';
 
 export default function CoinListSummary() {
     return (
@@ -25,7 +26,7 @@ export default function CoinListSummary() {
 
                 {coinList.map((coin, i) => <SingleCoin
                     key={coin.name}
-                    bgColor={i % 2 === 0 && 'bg-zinc-750'}
+                    bgColor={''}
                     name={coin.name}
                     image={coin.image}
                     currentPrice={coin.current_price}
@@ -33,9 +34,12 @@ export default function CoinListSummary() {
                     marketcap={coin.market_cap}
                     volume={coin.total_volume}
                     symbol={coin.symbol} />)}
-
-
             </section>
+            <div className='text-center'>
+                <Link to={'/market'} className='text-center'>
+                    <button className='w-[10rem] bg-amber-500 py-3 mt-10'>Browse More</button>
+                </Link>
+            </div>
         </>
     )
 }

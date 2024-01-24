@@ -1,6 +1,9 @@
 import { Line } from "react-chartjs-2";
 import { dataIncrease, dataDecrease } from '../../util/fakeData.js'
 import { useState, useEffect } from "react";
+import { colorisePriceChange } from "../../util/utilFunctions.jsx";
+import { formatPriceToShortForm } from "../../util/utilFunctions.jsx";
+import { Link } from "react-router-dom";
 
 const options = {
     responsive: true,
@@ -40,24 +43,10 @@ const options = {
 };
 
 
-
-function colorisePriceChange(val) {
-    if (val === 0) {
-        return <i className='bx bxs-down-arrow' ></i>
-    }
-    if (val > 0) {
-        return <i className='bx bxs-up-arrow text-xs text-green-500' ></i>
-    } else {
-        return <i className='bx bxs-down-arrow text-xs text-red-500' ></i>
-    }
-}
-
-
 export default function SingleCoin({ name, image, currentPrice, change24h, marketcap, volume, symbol, bgColor }) {
     const [loading, setLoading] = useState(true)
-    let formatter = new Intl.NumberFormat('en-US', { notation: 'compact', maximumFractionDigits: 2 });
     return (
-        <div className={`w-full py-4 px-2  flex justify-between border-b border-zinc-700 ${bgColor} hover:bg-zinc-750 cursor-pointer`}>
+        <Link to={'/market/' + name} className={`w-full py-4 px-2  flex justify-between border-b border-zinc-700 ${bgColor} hover:bg-zinc-750 cursor-pointer`}>
             <div className="flex-[.2] flex items-center gap-4 pl-4 md:pl-1 md:gap-2 sm:flex-1">
                 <div className="w-8">
                     <img src={image} alt="" />
@@ -80,16 +69,16 @@ export default function SingleCoin({ name, image, currentPrice, change24h, marke
                     {change24h && change24h.toFixed(2)}% {colorisePriceChange(change24h)}</h6>
             </div>
             <div className="flex-[.4] flex justify-center items-center gap-5 lg:flex-[.3] md:flex-[.2] sm:flex-1 font-roboto">
-                <h6 className="flex-[.4] lg:hidden">${formatter.format(volume)}</h6>
-                <h6 className="flex-[.5] lg:hidden">${formatter.format(marketcap)}</h6>
+                <h6 className="flex-[.4] lg:hidden">${formatPriceToShortForm(volume)}</h6>
+                <h6 className="flex-[.5] lg:hidden">${formatPriceToShortForm(marketcap)}</h6>
                 <div className="flex-1 text-end hidden lg:block">
-                    <h6 className="flex-[.4]">${formatter.format(volume)}</h6>
-                    <h6 className="text-xs">${formatter.format(marketcap)} </h6>
+                    <h6 className="flex-[.4]">${formatPriceToShortForm(volume)}</h6>
+                    <h6 className="text-xs">${formatPriceToShortForm(marketcap)} </h6>
                 </div>
                 <div className='flex-[.5] pr-5 max-w-[9rem] lg:hidden overflow-hidden max-h-[3rem] flex items-center'>
                     <Line width={'100%'} options={options} data={change24h && change24h.toFixed(2) > 0 ? dataIncrease : dataDecrease} ></Line>
                 </div>
             </div>
-        </div >
+        </Link >
     )
 }
