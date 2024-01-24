@@ -29,7 +29,7 @@ export default function Navbar() {
                     <i className="fi fi-rr-stats text-3xl"></i>
                     Market
                 </NavLink>
-                <NavLink to={'/ma'} className={({ isActive }) => activeLink(isActive)}>
+                <NavLink to={'/news'} className={({ isActive }) => activeLink(isActive)}>
                     <i className="fi fi-rr-newspaper text-3xl"></i>
                     News
                 </NavLink>
