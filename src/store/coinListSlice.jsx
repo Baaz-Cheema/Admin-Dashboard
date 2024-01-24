@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { configureStore } from "@reduxjs/toolkit"
+import newsSlice from "./newsSlice";
 
 
 const coinListSlice = createSlice({
@@ -22,6 +23,9 @@ const coinListSlice = createSlice({
 
 export const coinListActions = coinListSlice.actions
 const store = configureStore({
-    reducer: coinListSlice.reducer
+    reducer: {
+        coinList: coinListSlice.reducer,
+        newsList: newsSlice.reducer
+    }
 })
 export default store
