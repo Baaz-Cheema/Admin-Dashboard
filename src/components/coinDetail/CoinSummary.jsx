@@ -1,11 +1,19 @@
 import CoinChart from "../main-page/CoinChart";
 import CoinData from "./Coindata";
 import OtherCoins from "./OtherCoins";
+import { formatPriceToLocale } from "../../util/utilFunctions";
+import { useState, useEffect } from "react";
+import { colorisePriceChange } from "../../util/utilFunctions";
 
-export default function CoinSummary() {
+
+export default function CoinSummary(props) {
+    // const [coin, setCoin] = useState(null)
+    useEffect(() => {
+
+    }, [])
     return (
         <section className="font-poppins mb-14">
-            <CoinData />
+            <CoinData {...props} />
             <main className="flex gap-10 items-end lg:flex-col lg:items-center">
                 <div className="flex-[.7] md:self-start md:w-full">
                     <div className="flex gap-4 md:gap-2">
@@ -13,17 +21,17 @@ export default function CoinSummary() {
                             <img src="https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1696501400" alt="" />
                         </div>
                         <div>
-                            <h3 className='font-semibold font-poppins  text-3xl'>Bitcoin</h3>
-                            <h6 className='text-gray-400  text-lg mb-5'>BTC</h6>
+                            <h3 className='font-semibold font-poppins  text-3xl'>{props.name}</h3>
+                            <h6 className='text-gray-400 text-lg mb-5 uppercase'>{props.symbol}</h6>
                             <div className="flex gap-4 items-center font-semibold md:hidden">
-                                <h3 className="text-5xl sm:text-4xl">$2,400.90</h3>
-                                <h6 className="text-green-500"><i className='bx bxs-up-arrow  text-green-500 text-xs' ></i> 3.06%</h6>
+                                <h3 className="text-5xl sm:text-4xl">${formatPriceToLocale(props.price)}</h3>
+                                <h6 className={`text-green-500 ${props.priceChange.toFixed(2) > 0 ? 'text-green-500' : 'text-red-500'}`}>{props.priceChange.toFixed(2)}% {colorisePriceChange(props.priceChange)} </h6>
                             </div>
                         </div>
                     </div>
                     <div className="gap-4 items-center font-semibold hidden md:flex md:justify-between">
-                        <h3 className="text-5xl sm:text-4xl">$2,400.90</h3>
-                        <h6 className="text-green-500"><i className='bx bxs-up-arrow  text-green-500 text-xs' ></i> 3.06%</h6>
+                        <h3 className="text-5xl sm:text-4xl">${formatPriceToLocale(props.price)}</h3>
+                        <h6 className={`text-green-500 ${props.priceChange.toFixed(2) > 0 ? 'text-green-500' : 'text-red-500'}`}>{props.priceChange.toFixed(2)}% {colorisePriceChange(props.priceChange)}</h6>
                     </div>
                     <div className="mt-10 mb-5">
                         <p className="mb-5">Tags</p>
@@ -33,16 +41,11 @@ export default function CoinSummary() {
                             <p className="px-3 py-1 bg-zinc-750 rounded-3xl">Smart contract</p>
                         </div>
                     </div>
-                    <div className="flex gap-3 w-full">
-                        <button className="bg-amber-500 text-amber-50 font-semibold flex-1 py-5 rounded-lg">Buy Coin</button>
-                        <button className="text-amber-400 border border-amber-400 font-semibold flex-1 py-5 rounded-lg">Sell Coin</button>
-                    </div>
-
                     <div>
 
                     </div>
                 </div>
-                <OtherCoins />
+                <OtherCoins name={props.name} />
             </main>
         </section>
     )
