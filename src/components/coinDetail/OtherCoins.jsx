@@ -6,7 +6,6 @@ import { Link } from "react-router-dom"
 export default function OtherCoins({ name }) {
     const index = coinList.findIndex(a => a.name === name)
     const otherCoins = coinList.slice(index + 1, index + 4)
-    console.log(otherCoins)
     return (
         <div className="flex-1 lg:w-full">
             <h3 className='font-semibold font-poppins mb-1 text-xl'>Other Coins</h3>
@@ -15,14 +14,14 @@ export default function OtherCoins({ name }) {
                 {otherCoins.map((a, i) =>
                     <Link key={a.name}
                         to={'/market/' + a.name}
-                        className={`flex flex-col items-center flex-1 border-r border-zinc-700 lg:border-r-0 lg:border-b lg:flex-row lg:w-full lg:justify-between lg:pb-4 ${i === 2 && 'lg:pb-0 lg:border-b-0'}`}>
+                        className={`flex flex-col items-center flex-1 border-r border-zinc-700 lg:border-r-0 lg:border-b lg:flex-row lg:w-full lg:justify-between lg:pb-4 ${i === 2 && 'lg:pb-[0px] lg:border-b-0'}`}>
                         <div className="flex flex-col items-center lg:gap-2 lg:flex-row">
                             <div className="w-16 mb-1 lg:mb-0 lg:w-14 md:w-10">
                                 <img src={a.image} alt="" />
                             </div>
                             <div className="flex flex-col items-center lg:items-start">
-                                <h3 className='font-semibold font-poppins text-2xl text-ellipsis md:text-xl'>{a.name}</h3>
-                                <h6 className='text-gray-400 text-md mb-3 lg:mb-0 md:text-sm uppercase'>{a.symbol}</h6>
+                                <h3 className='font-semibold font-poppins text-2xl text-ellipsis md:text-xl uppercase'>{a.symbol}</h3>
+                                <h6 className='text-gray-400 text-md mb-3 lg:mb-0 md:text-sm'>{a.name}</h6>
                             </div>
                         </div>
                         <div className="flex flex-col items-center lg:items-end">

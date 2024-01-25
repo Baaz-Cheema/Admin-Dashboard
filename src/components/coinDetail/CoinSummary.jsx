@@ -18,11 +18,11 @@ export default function CoinSummary(props) {
                 <div className="flex-[.7] md:self-start md:w-full">
                     <div className="flex gap-4 md:gap-2">
                         <div className="w-16">
-                            <img src="https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1696501400" alt="" />
+                            <img src={props.image} alt="" />
                         </div>
                         <div>
-                            <h3 className='font-semibold font-poppins  text-3xl'>{props.name}</h3>
-                            <h6 className='text-gray-400 text-lg mb-5 uppercase'>{props.symbol}</h6>
+                            <h3 className='font-semibold font-poppins uppercase text-3xl'>{props.symbol}</h3>
+                            <h6 className='text-gray-400 text-lg mb-5'>{props.name}</h6>
                             <div className="flex gap-4 items-center font-semibold md:hidden">
                                 <h3 className="text-5xl sm:text-4xl">${formatPriceToLocale(props.price)}</h3>
                                 <h6 className={`text-green-500 ${props.priceChange.toFixed(2) > 0 ? 'text-green-500' : 'text-red-500'}`}>{props.priceChange.toFixed(2)}% {colorisePriceChange(props.priceChange)} </h6>

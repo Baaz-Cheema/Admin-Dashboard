@@ -2,6 +2,7 @@ import { data } from "../../util/data";
 import { getTime } from "../../util/utilFunctions";
 import { Line } from "react-chartjs-2";
 import ControlButtons from "../main-page/ControlButtons";
+import useCoinDataFetcher from "../hooks/coinDataFetcher";
 
 const options = {
     responsive: true,
@@ -12,18 +13,31 @@ const options = {
             position: 'top',
         },
     },
+    interaction: {
+        mode: 'nearest',
+        axis: 'x',
+        intersect: false
+    }
 };
 
-export default function DetailedChart() {
-    const labels = data && data.prices.map((a) => getTime(a[0]))
+export default function DetailedChart({ coin, symbol, image,id }) {
+    const {
+        loading,
+        coinData,
+        dataType,
+        duration,
+        setDuration,
+        changeDataType
+    } = useCoinDataFetcher(id)
     const chartdata = {
-        labels,
+        labels: coinData && coinData[dataType].map((a) => getTime(a[0], duration)),
         datasets: [
             {
                 label: 'crypto chart',
-                data: data && data.prices.map((a) => a[1]),
+                data: coinData && coinData[dataType].map((a) => a[1]),
                 borderColor: 'rgb(251 ,191 ,36)',
                 backgroundColor: 'rgb(251 ,191 ,36)',
+                pointRadius:0
             },]
     }
     return (
@@ -37,31 +51,35 @@ export default function DetailedChart() {
                     <div className="flex items-center gap-10">
                         <div className='flex items-center gap-3'>
                             <div className='w-10 md:py-5'>
-                                <img className='w-full h-full object-cover' src="https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1696501400" alt="" />
+                                <img className='w-full h-full object-cover' src={image} alt="" />
                             </div>
                             <div>
-                                <h3 className='font-poppins font-bold'>Bitcoin</h3>
-                                <h6 className="text-xs text-zinc-400 mt-[-3px]">BTC</h6>
+                                <h3 className='font-poppins font-bold uppercase'>{symbol}</h3>
+                                <h6 className="text-xs text-zinc-400 mt-[-3px]">{coin}</h6>
                             </div>
 
 
                         </div>
                         <div className="border border-zinc-700 p-2 flex gap-1 rounded-lg lg:hidden">
-                            <button className="bg-amber-500 w-[8rem] py-2 rounded-md">Price</button>
-                            <button className="w-[8rem] py-2">Market Cap</button>
+                            <button onClick={() => changeDataType('prices')} className={` w-[8rem] py-2 rounded-md ${dataType === 'prices' && 'bg-amber-500'}`}>Price</button>
+                            <button onClick={() => changeDataType('total_volumes')} className={`w-[8rem] rounded-md py-2 ${dataType === 'total_volumes' && 'bg-amber-500'}`}>Volume</button>
                         </div>
                     </div>
                     <div className="border border-zinc-700 p-2 flex gap-1 rounded-lg lg:hidden">
-                        <button className="bg-amber-500 w-[6rem] py-2 rounded-md">1D</button>
-                        <button className="w-[6rem] py-2">1W</button>
-                        <button className="w-[6rem] py-2">1M</button>
+                        <button onClick={() => setDuration('hourly')} className={`w-[6rem] py-2 rounded-md ${duration === 'hourly' && ' bg-amber-500'}`}>1H</button>
+                        <button onClick={() => setDuration('daily')} className={`w-[6rem] py-2 rounded-md ${duration === 'daily' && ' bg-amber-500'}`}>1D</button>
+                        <button onClick={() => setDuration('weekly')} className={`w-[6rem] py-2 rounded-md ${duration === 'weekly' && ' bg-amber-500'}`}>1W</button>
                     </div>
                 </main>
 
                 <main>
-                    <div className='h-[32rem] pb-2 px-10 lg:w-full md:px-0 md:pb-2 lg:h-[40rem] md:h-[35rem]' >
-                        <Line options={options} data={chartdata}></Line>
-                    </div>
+                    {loading ?
+                        <div className='w-full h-[32rem] lg:h-[40rem] flex justify-center items-center pb-10 md:h-[35rem]'>
+                            <i className='bx bx-loader-alt bx-spin text-6xl text-amber-500' ></i>
+                        </div> :
+                        <div className='h-[32rem] pb-2 px-10 lg:w-full md:px-0 md:pb-2 lg:h-[40rem] md:h-[35rem]' >
+                            <Line options={options} data={chartdata}></Line>
+                        </div>}
                 </main>
             </section>
         </>
