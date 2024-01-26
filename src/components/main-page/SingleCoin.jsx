@@ -62,7 +62,7 @@ export default function SingleCoin({ name, image, currentPrice, change24h, marke
                 <div className="flex-[.7]  justify-end hidden md:block text-end">
                     <h6 className="flex-1">${currentPrice && parseFloat(currentPrice.toFixed(2)).toLocaleString('en-US', { minimumFractionDigits: 2 })}</h6>
                     <h6 className={`flex-1 text-xs justify-end flex items-center  gap-1 ${change24h && change24h.toFixed(2) > 0 ? 'text-green-500' : 'text-red-500'}`}>
-                        {change24h && change24h.toFixed(2)}% {colorisePriceChange(change24h)}</h6>
+                        {change24h && change24h.toFixed(2)}%</h6>
                 </div>
                 <h6 className="flex-1 md:hidden">${currentPrice && currentPrice.toFixed(2)}</h6>
                 <h6 className={`flex-1 md:hidden text-left flex items-center gap-2 ${change24h && change24h.toFixed(2) > 0 ? 'text-green-500' : 'text-red-500'}`}>
