@@ -5,7 +5,7 @@ export default function Skeleton({ className }) {
         <motion.div
             animate={{ opacity: [0.5, 1, 0.5] }}
             transition={{ duration: 2, repeat: Infinity }}
-            className={className}
+            className={className+' bg-zinc-700 '}
         ></motion.div>
     )
 }

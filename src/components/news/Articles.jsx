@@ -26,7 +26,6 @@ export default function Articles() {
             const response = await axios.get(`https://newsdata.io/api/1/news?apikey=pub_36970ec6e626be098fdca6955ea786e4e01c1&q=crypto,%20cryptocurrency&country=us&language=en${currentIndex ? `&page=${pages[currentIndex]}` : ''}`)
             dispatch(newsListActions.setNews(response.data.results))
             dispatch(newsListActions.setPreviousPages(response.data.nextPage))
-            console.log(response)
             setIsLoading(false)
         }
 
