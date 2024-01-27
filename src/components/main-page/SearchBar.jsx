@@ -2,9 +2,11 @@ import { NavLink } from "react-router-dom"
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { ClickAwayListener } from "@mui/material"
+import AirdropModal from "./AirdropModal"
 export default function SearchBar() {
     const [open, setOpen] = useState(false)
     const [menu, setMenu] = useState(false)
+    const [openModal, setOpenModal] = useState(false)
     return (
         <main className="mb-10 font-poppins">
             <section className="flex  gap-7  md:hidden">
@@ -13,10 +15,10 @@ export default function SearchBar() {
                     <input className="bg-zinc-800 " type="text" placeholder="Search..." />
                 </div>
 
-                <div className="bg-amber-500 flex items-center text-amber-50 rounded">
-                    <p className="px-5">Create new account</p>
+                <div onClick={() => setOpenModal(true)} className="bg-amber-500 flex items-center text-amber-50 rounded cursor-pointer hover:bg-amber-400">
+                    <p className="px-5">See Latest Airdrops</p>
                 </div>
-                <div className="border-amber-400 border-2 rounded flex items-center">
+                <div className="border-amber-400 border-2 rounded flex items-center hover:bg-amber-400 cursor-pointer">
                     <i className='bx bxs-bell px-5'></i>
                 </div>
 
@@ -53,6 +55,10 @@ export default function SearchBar() {
                     </div>
                 </ClickAwayListener>
             </div >
+            <div onClick={() => setOpenModal(true)} className="fixed bottom-24 z-20 w-16 rounded-full overflow-hidden">
+                <img className="w-full" src="https://lh3.googleusercontent.com/pw/ABLVV84yfNLxvD0FFugFA4_yTcWnJKJ0-2cE5tYXvF0AbT7ML8F9UKIvjlXukio8lrGPKYr0C3NW2QGis1SLlvo211nFC7-6qyTqCAGj3LpvGBK4Dld-fyaD=w2400" alt="" />
+            </div>
+            {openModal && <AirdropModal setIsOpen={setOpenModal} />}
         </main >
     )
 }
