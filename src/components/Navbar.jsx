@@ -9,7 +9,7 @@ export default function Navbar() {
     }
 
     return (
-        <section className="bg-zinc-900 flex md:fixed md:bottom-0 md:w-full z-10">
+        <section className="bg-zinc-900 flex md:fixed md:bottom-0 md:w-full z-20">
             <nav className="font-poppins text-xs flex flex-col gap-10 pt-5 md:pt-0 box-border sticky h-fit top-5 md:flex-row md:w-full md:justify-between md:gap-0 md:px-7 md:static" >
                 <NavLink className="flex items-center flex-col gap-2 md:hidden">
                     <div className="w-9">
@@ -33,11 +33,10 @@ export default function Navbar() {
                     <i className="fi fi-rr-newspaper text-3xl"></i>
                     News
                 </NavLink>
-                <NavLink to={'/m'} className={({ isActive }) => activeLink(isActive)}>
+                <NavLink to={'/portfolio'} className={({ isActive }) => activeLink(isActive)}>
                     <i className="fi fi-rr-user text-3xl"></i>
-                    Account
+                    Portfolio
                 </NavLink>
-
             </nav>
         </section>
     )
