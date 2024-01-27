@@ -5,7 +5,7 @@ import './App.css'
 import Market from './pages/Market';
 import CoinDetail from './pages/CoinDetail';
 import News from './pages/News';
-
+import Portfolio from './pages/Portfolio';
 
 
 const router = createBrowserRouter([
@@ -16,7 +16,8 @@ const router = createBrowserRouter([
         path: '/market', element: <Market />
       },
       { path: '/market/:coin', element: <CoinDetail /> },
-      { path: '/news', element: <News /> }
+      { path: '/news', element: <News /> },
+      { path: '/portfolio', element: <Portfolio /> }
     ]
   }
 ]

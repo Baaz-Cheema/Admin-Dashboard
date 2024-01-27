@@ -17,6 +17,7 @@
 }
 
 
+
 .gaugefill {
     position: absolute;
     top: 100%;
@@ -44,4 +45,14 @@
     justify-content: center;
     padding-bottom: 25%;
     box-sizing: border-box;
+}
+
+.scroll-none::-webkit-scrollbar {
+    width: 10px;
+
+}
+
+.scroll-none::-webkit-scrollbar-thumb {
+    background: #555050;
+    border-radius: 2em;
 }
