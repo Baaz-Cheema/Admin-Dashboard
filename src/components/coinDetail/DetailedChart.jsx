@@ -1,4 +1,3 @@
-import { data } from "../../util/data";
 import { getTime } from "../../util/utilFunctions";
 import { Line } from "react-chartjs-2";
 import ControlButtons from "../main-page/ControlButtons";
@@ -20,7 +19,8 @@ const options = {
     }
 };
 
-export default function DetailedChart({ coin, symbol, image,id }) {
+export default function DetailedChart({ coin, symbol, image, id }) {
+
     const {
         loading,
         coinData,
@@ -37,16 +37,15 @@ export default function DetailedChart({ coin, symbol, image,id }) {
                 data: coinData && coinData[dataType].map((a) => a[1]),
                 borderColor: 'rgb(251 ,191 ,36)',
                 backgroundColor: 'rgb(251 ,191 ,36)',
-                pointRadius:0
+                pointRadius: 0
             },]
     }
     return (
         <>
             <div className="hidden lg:flex lg:mb-3 lg:gap-4">
-                <ControlButtons />
+                <ControlButtons changeDataType={changeDataType} setDuration={setDuration} duration={duration} dataType={dataType} />
             </div>
             <section className="border border-zinc-700 py-4 px-4 ">
-
                 <main className="flex justify-between w-full mb-5">
                     <div className="flex items-center gap-10">
                         <div className='flex items-center gap-3'>
@@ -54,8 +53,8 @@ export default function DetailedChart({ coin, symbol, image,id }) {
                                 <img className='w-full h-full object-cover' src={image} alt="" />
                             </div>
                             <div>
-                                <h3 className='font-poppins font-bold uppercase'>{symbol}</h3>
-                                <h6 className="text-xs text-zinc-400 mt-[-3px]">{coin}</h6>
+                                <h3 className='font-poppins font-bold uppercase'>{symbol && symbol}</h3>
+                                <h6 className="text-xs text-zinc-400 mt-[-3px]">{coin && coin}</h6>
                             </div>
 
 

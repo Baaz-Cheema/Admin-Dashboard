@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { colorisePriceChange } from "../../util/utilFunctions.jsx";
 import { formatPriceToShortForm } from "../../util/utilFunctions.jsx";
 import { Link } from "react-router-dom";
+import { formatSmallPrices } from "../../util/utilFunctions.jsx";
 
 const options = {
     responsive: true,
@@ -44,7 +45,7 @@ const options = {
 
 
 export default function SingleCoin({ name, image, currentPrice, change24h, marketcap, volume, symbol, bgColor }) {
-    const [loading, setLoading] = useState(true)
+    const transformedPrice = currentPrice > 0.01 ? parseFloat(currentPrice.toFixed(2)).toLocaleString('en-US', { minimumFractionDigits: 2 }) : formatSmallPrices(currentPrice)
     return (
         <Link to={'/market/' + name} className={`w-full py-4 px-2  flex justify-between border-b border-zinc-700 ${bgColor} hover:bg-zinc-750 cursor-pointer`}>
             <div className="flex-[.2] flex items-center gap-4 pl-4 md:pl-1 md:gap-2 sm:flex-1">
@@ -60,11 +61,11 @@ export default function SingleCoin({ name, image, currentPrice, change24h, marke
 
             <div className="flex gap-5 justify-end flex-[.3] items-center lg:flex-[.4] sm:flex-1  font-roboto">
                 <div className="flex-[.7]  justify-end hidden md:block text-end">
-                    <h6 className="flex-1">${currentPrice && parseFloat(currentPrice.toFixed(2)).toLocaleString('en-US', { minimumFractionDigits: 2 })}</h6>
-                    <h6 className={`flex-1 text-xs justify-end flex items-center  gap-1 ${change24h && change24h.toFixed(2) > 0 ? 'text-green-500' : 'text-red-500'}`}>
+                    <h6 className="flex-1">${transformedPrice}</h6>
+                    <h6 className={`flex-1 text-xs justify-end flex items-center gap-1 ${change24h && change24h.toFixed(2) > 0 ? 'text-green-500' : 'text-red-500'}`}>
                         {change24h && change24h.toFixed(2)}%</h6>
                 </div>
-                <h6 className="flex-1 md:hidden">${currentPrice && currentPrice.toFixed(2)}</h6>
+                <h6 className="flex-1 md:hidden">${transformedPrice}</h6>
                 <h6 className={`flex-1 md:hidden text-left flex items-center gap-2 ${change24h && change24h.toFixed(2) > 0 ? 'text-green-500' : 'text-red-500'}`}>
                     {change24h && change24h.toFixed(2)}% {colorisePriceChange(change24h)}</h6>
             </div>
