@@ -40,6 +40,7 @@ export default function ControlButtons({ changeDataType, setDuration, duration, 
                     {openSecond && <div className='w-full absolute list-none z-10 top-full left-0 border border-zinc-700 bg-zinc-800'>
                         <li onClick={(e) => { e.stopPropagation(); setOpenSecond(false); setDuration('hourly') }} className={`py-3 px-5 border border-zinc-700 ${duration === 'hourly' && ' text-amber-500'}`}>Hourly</li>
                         <li onClick={(e) => { e.stopPropagation(); setOpenSecond(false); setDuration('daily') }} className={`py-3 px-5 border border-zinc-700 ${duration === 'daily' && ' text-amber-500'}`}>Daily</li>
+                        <li onClick={(e) => { e.stopPropagation(); setOpenSecond(false); setDuration('weekly') }} className={`py-3 px-5 border border-zinc-700 ${duration === 'weekly' && ' text-amber-500'}`}>Weekly</li>
                     </div>}
                 </div>
             </ClickAwayListener >

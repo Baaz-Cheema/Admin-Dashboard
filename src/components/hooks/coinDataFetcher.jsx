@@ -32,10 +32,9 @@ export default function useCoinDataFetcher(coin) {
                     'prices': [],
                     'total_volumes': []
                 }
-                for (let i = 0; i < response.data.prices.length; i += 7) {
+                for (let i = 0; i < response.data.prices.length; i += 7) { //getting weekly data 
                     obj.prices.push(response.data.prices[i])
                     obj.total_volumes.push(response.data.total_volumes[i])
-                    console.log(obj,response.data)
                 }
                 setCoindata(obj)
 

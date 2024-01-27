@@ -1,14 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { configureStore } from "@reduxjs/toolkit"
+
+import { portfolioSlice } from "./portfolioSlice";
 import newsSlice from "./newsSlice";
 
 
 const coinListSlice = createSlice({
     name: 'coinList',
     initialState: {
-        coins:  [],
+        coins: [],
         fearGreedIndex: 0,
-        pages: []
+        isLoading: true
     },
 
     reducers: {
@@ -18,17 +20,11 @@ const coinListSlice = createSlice({
         setCoins(state, action) {
             state.coins = action.payload
         },
-        setPages(state, action) {
-            state.pages.push(action.payload)
+        setLoading(state) {
+            state.isLoading = false
         }
     }
 })
-
-
-
-
-
-
 
 
 
@@ -36,7 +32,9 @@ export const coinListActions = coinListSlice.actions
 const store = configureStore({
     reducer: {
         coinList: coinListSlice.reducer,
-        newsList: newsSlice.reducer
+        newsList: newsSlice.reducer,
+        portfolio: portfolioSlice.reducer
     }
 })
+
 export default store
