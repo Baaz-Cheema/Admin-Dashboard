@@ -4,8 +4,7 @@ import 'chart.js/auto'; // Added this to fix blank chart issue
 import { Line } from 'react-chartjs-2';
 import ControlButtons from './ControlButtons';
 import useCoinDataFetcher from '../hooks/coinDataFetcher';
-import { formatSmallPrices } from '../../util/utilFunctions';
-import { formatPriceToLocale } from '../../util/utilFunctions';
+
 
 
 const options = {
