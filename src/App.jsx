@@ -11,7 +11,7 @@ import Portfolio from './pages/Portfolio';
 const router = createBrowserRouter([
   {
     path: '/', element: <Root />, children: [
-      { path: 'main', element: <MainPage /> },
+      { index: true, element: <MainPage /> },
       {
         path: '/market', element: <Market />
       },
