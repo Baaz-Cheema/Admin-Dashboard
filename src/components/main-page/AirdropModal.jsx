@@ -51,7 +51,7 @@ export default function AirdropModal({ setIsOpen }) {
                     {isLoading ?
                         new Array(6).fill().map((a, i) =>
                             <div className='px-5 py-3' key={i}>
-                                <Skeleton className={'h-[3.6rem]'} />
+                                <Skeleton className={'h-[3.5rem]'} />
                             </div>) :
                         coins.map((a, i) =>
                             <a href={a.url_airdrop} target='_blank ' key={i} className="border py-3  border-zinc-700 hover:bg-zinc-700 px-5">
