@@ -10,7 +10,7 @@ export default function PortfolioData() {
         <>
             <div className="font-poppins flex gap-5">
                 <motion.div className="flex justify-around max-w-[80rem] mx-auto mb-10">
-                    <div className="flex border border-zinc-700 rounded-lg font-xl uppercase text-black relative">
+                    <div className="flex border border-zinc-700 rounded-lg font-xl  text-black relative">
                         <motion.div layout transition={{
                             layout: { duration: 0.2 }
                         }}

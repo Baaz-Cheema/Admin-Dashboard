@@ -60,7 +60,7 @@ export function formatSmallPrices(val) {
 
 
 export function transformPrice(price) {
-    if (price > 0.001) {
+    if (price < 0.001) {
         return formatSmallPrices(price)
     } else {
         return formatPriceToLocale(price)

@@ -59,9 +59,6 @@ export const portfolioSlice = createSlice({
         subtractBudget(state, action) {
             state.budget = state.budget - action.payload
         },
-        addBudget(state, action) {
-
-        },
         addTransaction(state, action) {
             state.transactions.unshift(action.payload)
         },

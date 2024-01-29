@@ -1,6 +1,5 @@
 import { Line } from "react-chartjs-2";
 import { dataIncrease, dataDecrease } from '../../util/fakeData.js'
-import { useState, useEffect } from "react";
 import { colorisePriceChange } from "../../util/utilFunctions.jsx";
 import { formatPriceToShortForm } from "../../util/utilFunctions.jsx";
 import { Link } from "react-router-dom";

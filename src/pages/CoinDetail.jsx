@@ -1,7 +1,6 @@
 import CoinSummary from "../components/coinDetail/CoinSummary";
 import DetailedChart from "../components/coinDetail/DetailedChart";
 import { useParams } from "react-router-dom";
-import { coinList } from "../util/coinList";
 import { useSelector } from "react-redux";
 export default function CoinDetail() {
     const data = useSelector(state => state.coinList.coins)

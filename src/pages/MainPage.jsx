@@ -1,7 +1,4 @@
 import CoinChart from "../components/main-page/CoinChart"
-import SearchBar from "../components/main-page/SearchBar"
-import CoinListSummary from "../components/main-page/CoinListSummary"
-import ControlButtons from "../components/main-page/ControlButtons"
 import { Link } from "react-router-dom"
 import TrendingCoins from "../components/main-page/TrendingCoins"
 export default function MainPage() {
