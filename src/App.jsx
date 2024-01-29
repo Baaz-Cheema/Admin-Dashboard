@@ -23,7 +23,7 @@ const router = createBrowserRouter([
 ]
 )
 const img = new Image(); //for image preloading. 
-img.src = ''
+img.src = 'https://media4.giphy.com/media/EIOKH2p0wqgl9KW5fg/giphy.gif'
 
 function App() {
   return (
