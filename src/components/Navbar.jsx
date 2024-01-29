@@ -1,11 +1,11 @@
 import { Link, NavLink } from "react-router-dom"
-
+import { motion } from "framer-motion"
 
 export default function Navbar() {
 
     function activeLink(isActive) {
         return `flex flex-col items-center py-3 px-3 md:px-0
-        ${isActive ? 'border-amber-400 text-amber-400 border-r-4 md:px-0 rounded md:border-r-0 md:border-t-4 ' : 'border-r-4 border-transparent md:border-r-0 md:border-t-4'}`
+        ${isActive ? 'border-amber-400 text-amber-400 border-r-4 md:px-0 rounded md:border-r-0 md:border-t-4 ' : 'border-r-4 border-transparent md:border-r-0 md:border-t-4 '}`
     }
 
     return (
@@ -21,10 +21,12 @@ export default function Navbar() {
                     </div>
 
                 </NavLink>
-                <NavLink to={'/main'} className={({ isActive }) => activeLink(isActive)}>
+
+                <NavLink to={'/'} className={({ isActive }) => activeLink(isActive)}>
                     <i className="fi fi-rr-overview text-3xl md:text-2xl"></i>
                     Overview
                 </NavLink>
+
                 <NavLink to={'/market'} className={({ isActive }) => activeLink(isActive)}>
                     <i className="fi fi-rr-stats text-3xl md:text-2xl"></i>
                     Market
@@ -33,6 +35,7 @@ export default function Navbar() {
                     <i className="fi fi-rr-newspaper text-3xl md:text-2xl"></i>
                     News
                 </NavLink>
+
                 <NavLink to={'/portfolio'} className={({ isActive }) => activeLink(isActive)}>
                     <i className="fi fi-rr-user text-3xl md:text-2xl"></i>
                     Portfolio
