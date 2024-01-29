@@ -38,7 +38,7 @@ export default function CoinListSummary({ clickCount, handleClick, coins }) {
 
                 {isLoading ?
                     new Array(10).fill().map((a,i) =>
-                        <div className='px-3 py-1' key={i}>
+                        <div className='px-3 mt-2' key={i}>
                          <Skeleton className={'h-14 my-1'}/>
                         </div>) :
                     getSortedArray().map((coin, i) => <SingleCoin

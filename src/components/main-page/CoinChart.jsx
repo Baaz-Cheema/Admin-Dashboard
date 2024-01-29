@@ -59,7 +59,11 @@ export default function CoinChart() {
                                 <div className='w-10 md:py-5'>
                                     <img className='w-full h-full object-cover' src="https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1696501400" alt="" />
                                 </div>
-                                <h3 className='font-poppins font-bold'>Bitcoin</h3>
+                                <div>
+                                    <h3 className='font-poppins font-bold'>Bitcoin</h3>
+                                    <h3 className='font-poppins text-zinc-400 text-xs'>BTC</h3>
+                                </div>
+
                             </div>
                             <div className='py-3 flex flex-1 items-center gap-4 md:hidden'>
                                 <ControlButtons changeDataType={changeDataType} setDuration={setDuration} duration={duration} dataType={dataType} />
@@ -70,8 +74,10 @@ export default function CoinChart() {
                                 <i className='bx bx-loader-alt bx-spin text-6xl text-amber-500 ' ></i>
                             </div>
                             :
-                            <div className='h-[28rem] pb-2 px-10 lg:w-full md:px-0 md:pb-2 lg:h-[40rem] md:h-[35rem]' >
-                                <Line options={options} data={chartdata}></Line>
+                            <div className='overflow-auto scroll-none'>
+                                <div className='h-[28rem] w-[200%] max-w-[200%]  pb-2 lg:h-[40rem] px-10 md:px-0 md:pb-2 md:h-[30rem]' >
+                                    <Line options={options} data={chartdata}></Line>
+                                </div>
                             </div>}
                     </section>}
 

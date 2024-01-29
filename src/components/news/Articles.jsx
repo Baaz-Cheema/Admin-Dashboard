@@ -12,7 +12,6 @@ export default function Articles() {
     const newsItems = useSelector(state => state.newsList.news)
     const pages = useSelector(state => state.newsList.pages)
     const currentIndex = useSelector(state => state.newsList.currentPageIndex)
-
     function handlePagination(queue) {
         if (queue === 'next') {
             dispatch(newsListActions.incrementIndex())
@@ -43,11 +42,11 @@ export default function Articles() {
                         key={a.article_id}
                         data={a}
                     />
-                ) : new Array(9).fill().map((a, i) => <Skeleton key={i} className={'w-[full] h-[45vh] bg-zinc-700'} />)}
+                ) : new Array(9).fill().map((a, i) => <Skeleton key={i} className={'w-[full] h-[45vh] xs:h-[30vh] bg-zinc-700'} />)}
             </section>
             <div className="flex gap-5 justify-center mb-10 font-poppins">
                 <button disabled={currentIndex === 0} className="bg-amber-500 w-[10rem] py-3 rounded disabled:opacity-65 disabled:cursor-not-allowed" onClick={() => handlePagination('prev')}>Previous</button>
-                <button disabled={currentIndex === null} className="bg-amber-500 w-[10rem] py-3 rounded disabled:opacity-65 disabled:cursor-not-allowed" onClick={() => handlePagination('next')}>Next</button>
+                <button disabled={pages[pages.length - 1] === null} className="bg-amber-500 w-[10rem] py-3 rounded disabled:opacity-65 disabled:cursor-not-allowed" onClick={() => handlePagination('next')}>Next</button>
             </div>
         </>
     )

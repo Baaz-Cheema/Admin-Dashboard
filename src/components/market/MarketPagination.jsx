@@ -6,7 +6,7 @@ export default function MarketPagination({pageNum,setPageNum}) {
     }, [pageNum])
     return (
         <section className="flex justify-center my-10">
-            <div className="flex gap-3">
+            <div className="flex gap-3 font-poppins">
                 <button
                     disabled={pageNum === 1}
                     onClick={() => setPageNum(1)}
