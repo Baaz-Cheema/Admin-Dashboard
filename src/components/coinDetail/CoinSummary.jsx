@@ -1,7 +1,7 @@
 import CoinData from "./Coindata";
 import OtherCoins from "./OtherCoins";
 import { formatPriceToLocale } from "../../util/utilFunctions";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { colorisePriceChange } from "../../util/utilFunctions";
 import Skeleton from "../UI/Skeleton";
 import BuyModal from "./BuyModal";
@@ -12,6 +12,13 @@ export default function CoinSummary(props) {
     // const isLoading = useSelector(state => state.coinList.isLoading)
     const [isOpen, setIsOpen] = useState(false)
     const transformedPrice = props.price > 0.01 ? parseFloat(props.price.toFixed(2)).toLocaleString('en-US', { minimumFractionDigits: 2 }) : formatSmallPrices(props.price)
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = 'hidden'; // Or other preferred method
+        } else {
+            document.body.style.overflow = 'auto';
+        }
+    }, [isOpen]);
     return (
         <section className="font-poppins mb-14">
             <CoinData {...props} />
