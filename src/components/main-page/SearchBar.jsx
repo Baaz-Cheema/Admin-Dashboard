@@ -3,13 +3,20 @@ import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { ClickAwayListener } from "@mui/material"
 import AirdropModal from "./AirdropModal"
-
+import { useEffect } from "react"
 import SearchedItems from "./SearchedItems"
 export default function SearchBar() {
     const [open, setOpen] = useState(false)
     const [searchItem, setSearchItem] = useState('')
     const [openModal, setOpenModal] = useState(false)
     const [isFocused, setIsFocused] = useState(false)
+    useEffect(() => {
+        if (openModal) {
+            document.body.style.overflow = 'hidden'; // Or other preferred method
+        } else {
+            document.body.style.overflow = 'auto';
+        }
+    }, [openModal]);
     return (
         <main className="mb-10 font-poppins">
             <section className="flex  gap-7  md:hidden">
