@@ -6,10 +6,8 @@ import { useDispatch } from "react-redux"
 import axios from "axios"
 import { coinListActions } from "../store/coinListSlice"
 import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
 import SearchBar from "../components/main-page/SearchBar"
-
-
+import ErrorMessage from "../components/UI/ErrorMessage"
 export default function Root() {
     const location = useLocation()
     const dispatch = useDispatch()
@@ -50,22 +48,11 @@ export default function Root() {
     }, [location.pathname])
 
     return <div className="bg-zinc-800 text-zinc-100 flex relative">
-        <AnimatePresence>
-            {error && <motion.p
-                initial={{ y: -50, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className="bg-red-500 fixed z-10 top-10 right-[45%] text-center px-3 rounded-lg font-bold font-roboto py-2">
-                API request limit reached, <br />try again in 2-3 minutes.
-            </motion.p>}
-        </AnimatePresence>
-
-
-
+        <ErrorMessage error={error} message={<><span>API request limit reached,</span><br /><span>try again in 2-3 minutes.</span></>} />
         <Navbar />
-        <section className="py-5 px-10 flex-1 sm:px-3 md:mb-20 ">
+        <section className="py-5 px-10 flex-1 sm:px-3 md:mb-10 ">
             <SearchBar />
-            <Outlet />
+            <Outlet/>
         </section>
     </div >
 }

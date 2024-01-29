@@ -1,23 +1,15 @@
-import { useState } from "react";
-// import { motion } from "framer-motion";
+import { motion } from 'framer-motion';
 
-// const Transition = ({ children }) => {
-//     const [currentPage, setCurrentPage] = useState(0); // Assuming initial page is 0
-
-//     // ...
-
-// //     return (
-// //         <motion.div
-// //             initial={{
-// //                 x: newPageIndex > previousPageIndex ? '100vw' : '-100vw'
-// //             }}
-// //             animate={{ x: 0 }}
-// //             exit={{
-// //                 x: newPageIndex > previousPageIndex ? '-100vw' : '100vw'
-// //             }}
-// //             transition={{ duration: 0.5 }}
-// //         >
-// //             {children}
-// //         </motion.div>
-// //     );
-// // };
+export const Transition = ({ children }) => {
+    console.log('asldknsalkdn')
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      {children}
+    </motion.div>
+  );
+};
