@@ -1,11 +1,12 @@
-import { coinList } from "../../util/coinList"
 import { formatPriceToLocale } from "../../util/utilFunctions"
 import { colorisePriceChange } from "../../util/utilFunctions"
 import { Link } from "react-router-dom"
 import Skeleton from "../UI/Skeleton"
+import { useSelector } from "react-redux"
 
-export default function OtherCoins({ name, isLoading }) {
-    const index = coinList.findIndex(a => a.name === name)
+export default function OtherCoins({ symbol, isLoading }) {
+    const coinList= useSelector(state=>state.coinList.coins)
+    const index = coinList.findIndex(a => a.symbol === symbol)
     const otherCoins = coinList.slice(index + 1, index + 4)
     return (
         <div className="flex-1 lg:w-full">

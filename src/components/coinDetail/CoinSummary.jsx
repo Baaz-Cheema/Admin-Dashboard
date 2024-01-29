@@ -76,7 +76,7 @@ export default function CoinSummary(props) {
                             image={props.image} />
                     }
                 </AnimatePresence>
-                <OtherCoins name={props.name} isLoading={props.isLoading} />
+                <OtherCoins symbol={props.symbol} isLoading={props.isLoading} />
             </main>
         </section>
     )
