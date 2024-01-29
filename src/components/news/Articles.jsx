@@ -20,6 +20,9 @@ export default function Articles() {
         }
     }
     useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+    }, [currentIndex])
+    useEffect(() => {
         const fetch = async () => {
             setIsLoading(true)
             const response = await axios.get(`https://newsdata.io/api/1/news?apikey=pub_36970ec6e626be098fdca6955ea786e4e01c1&q=crypto,%20cryptocurrency&country=us&language=en${currentIndex ? `&page=${pages[currentIndex]}` : ''}`)
@@ -30,9 +33,8 @@ export default function Articles() {
 
         fetch()
     }, [dispatch, currentIndex])
-    useEffect(() => {
-        window.scrollTo({ top: 0, behavior: 'smooth' })
-    }, [currentIndex])
+
+
     return (
         <>
             <section className="grid grid-cols-3 gap-5 gap-y-8 lg:grid-cols-2 sm:grid-cols-1 mb-10">
