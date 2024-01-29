@@ -7,9 +7,10 @@ export default function SearchedItems({ val }) {
     }
     const coins = useSelector(state => state.coinList.coins)
     const filteredCoins = coins.filter((a) =>
-        transformText(a.name).includes(transformText(val) ||
+        transformText(a.name).includes(transformText(val)) ||
             transformText(a.symbol).includes(transformText(val))
-        ))
+        )
+        console.log(filteredCoins,val)
     return (
       <>
             {val && filteredCoins.length === 0 &&
