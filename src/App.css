@@ -49,10 +49,14 @@
 
 .scroll-none::-webkit-scrollbar {
     width: 10px;
-
+    height: 7px;
 }
 
 .scroll-none::-webkit-scrollbar-thumb {
-    background: #555050;
+    background: #8c8b8b;
     border-radius: 2em;
+}
+
+canvas {
+    width: 100% !important;
 }
