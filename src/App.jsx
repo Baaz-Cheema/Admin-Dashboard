@@ -22,6 +22,8 @@ const router = createBrowserRouter([
   }
 ]
 )
+const img = new Image(); //for image preloading. 
+img.src = ''
 
 function App() {
   return (

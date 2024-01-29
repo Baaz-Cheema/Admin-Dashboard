@@ -35,12 +35,16 @@ export default function AirdropModal({ setIsOpen }) {
                 className='bg-zinc-750 rounded-lg fixed top-0 bottom-0 z-50 flex flex-col text-white w-[30rem]  sm:w-[90%] overflow-hidden drop-shadow-2xl'>
                 <div className="px-5 pt-5 font-poppins flex justify-between">
                     <div>
-                        <h3 className="">
-                            Best Rated Airdrops
-                        </h3>
+                        <div className="flex gap-2 items-center">
+                            <h3 className="">
+                                Best Rated Airdrops
+                            </h3>
+                            <i className='bx bx-gift bx-tada text-xl'></i>
+                        </div>
+
                         <p className="text-sm text-zinc-400">Latest airdrops added to Coinverse</p>
                     </div>
-                    <i className='bx bx-gift bx-tada text-3xl'></i>
+                    <i onClick={() => setIsOpen(false)} className='bx bx-x text-5xl' ></i>
                 </div>
 
                 <section className="mt-5 flex flex-col">
@@ -59,7 +63,7 @@ export default function AirdropModal({ setIsOpen }) {
                                         <div className="flex justify-between items-center">
                                             <h3>{a.token}</h3>
                                             <div className="flex items-center gap-2">
-                                                <i className="fi fi-rr-social-network mt-1"></i>
+                                                <i className="fi fi-rr-social-network mt-[1px] text-xs"></i>
                                                 <div className="flex items-center bg-red-500 w-[7.5rem] h-2 rounded">
                                                     <div className="bg-green-500 h-full rounded rounded-r-none" style={{ width: a.like_ratio + '%' }}></div>
                                                 </div>
@@ -67,8 +71,8 @@ export default function AirdropModal({ setIsOpen }) {
 
                                         </div>
                                         <div className="flex justify-between text-xs text-zinc-400">
-                                            <h4 className="text-xs text-zinc-400">{a.name}</h4>
-                                            <h5 className="text-sm">Ends in <span className={`${a.days_left < 10 && 'text-red-500'}`}>{a.days_left}</span> days</h5>
+                                            <h4 className="text-xs text-zinc-400 w-1/2">{a.name}</h4>
+                                            <h5 className="text-sm whitespace-nowrap">Ends in <span className={`${a.days_left < 10 && 'text-red-500'}`}>{a.days_left}</span> days</h5>
                                         </div>
                                     </div>
                                 </div>
