@@ -24,7 +24,11 @@ export default function SearchBar() {
                     <i className="fi fi-rr-search"></i>
                     <input
                         onFocus={() => setIsFocused(true)}
-                        onBlur={() => setIsFocused(false)}
+                        onBlur={() =>
+                            setTimeout(() => {
+                                setIsFocused(false);
+                            }, 300)
+                        }
                         value={searchItem}
                         onChange={(e) => setSearchItem(e.target.value)}
                         className="bg-zinc-800 outline-none w-full max-w-1/2" type="text" placeholder="Search..." />
