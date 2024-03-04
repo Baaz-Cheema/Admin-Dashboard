@@ -17,6 +17,7 @@ export default function SearchBar() {
             document.body.style.overflow = 'auto';
         }
     }, [openModal]);
+
     return (
         <main className="mb-10 font-poppins">
             <section className="flex  gap-7  md:hidden">
@@ -34,7 +35,7 @@ export default function SearchBar() {
                         className="bg-zinc-800 outline-none w-full max-w-1/2" type="text" placeholder="Search..." />
                     {searchItem && isFocused &&
                         <section className="border border-zinc-700 rounded-b-lg  overflow-auto bg-zinc-750 scroll-none w-[20rem] h-[20rem] left-0 absolute top-[101.2%] z-10">
-                            <SearchedItems val={searchItem} />
+                            <SearchedItems val={searchItem} setSearchItem={setSearchItem}/>
                         </section>}
                 </div>
 
