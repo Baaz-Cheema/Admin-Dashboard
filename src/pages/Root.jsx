@@ -25,7 +25,7 @@ export default function Root() {
                         name: a.item.name,
                         symbol: a.item.symbol,
                         image: a.item.large,
-                        current_price: parseFloat(a.item.data.price.replace(/[$,]/g, '')),
+                        current_price: a.item.data.price, //seems like price is in number now, instead of being a str. 
                         price_change_percentage_24h: a.item.data.price_change_percentage_24h.usd,
                         total_volume: parseFloat(a.item.data.total_volume.replace(/[$,]/g, '')),
                         market_cap: parseFloat(a.item.data.market_cap.replace(/[$,]/g, '')),
@@ -35,6 +35,7 @@ export default function Root() {
                 dispatch(coinListActions.setLoading(false))
                 dispatch(coinListActions.setCoins(newArr))
             } catch (error) {
+                console.log(error)
                 setError(true)
                 setTimeout(() => {
                     setError(false)
@@ -52,7 +53,7 @@ export default function Root() {
         <Navbar />
         <section className="py-5 px-10 flex-1 sm:px-3 md:mb-10 ">
             <SearchBar />
-            <Outlet/>
+            <Outlet />
         </section>
     </div >
 }
